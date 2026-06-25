@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"/Users/dchinni/Desktop/portfolio/diego website/.claude\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx --version)",
+      "Bash(ruby --version)",
+      "Bash(pdftotext \"/Users/dchinni/Desktop/portfolio/diego website/CV/CV Builder Polimi.pdf\" -)",
+      "Bash(python3 -c ' *)",
+      "Bash(pip3 install *)"
+    ]
+  }
+}

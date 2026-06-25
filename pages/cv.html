@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curriculum Vitae — Diego Chinni</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://api.fontshare.com/v2/css?f[]=the-seasons@400,700&display=swap" rel="stylesheet">
+  <style>
+    .cv-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 32px;
+      padding: 12px 28px;
+      border: 1px solid var(--gold);
+      border-radius: 2px;
+      font-size: 0.6875rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .cv-download-btn:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+    .cv-skill-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 24px;
+    }
+    .cv-skill-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(245,240,232,0.06);
+      font-size: 0.8125rem;
+      color: rgba(245,240,232,0.75);
+    }
+    .cv-skill-level {
+      font-size: 0.5625rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .cv-exp-entry {
+      margin-bottom: 20px;
+    }
+    .cv-exp-year {
+      font-size: 0.5625rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .cv-exp-title {
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: var(--off-white);
+    }
+    .cv-exp-desc {
+      font-size: 0.75rem;
+      line-height: 1.65;
+      color: rgba(245,240,232,0.6);
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <a href="../index.html" class="nav-logo">DC</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#progetti">Progetti</a></li>
+      <li><a href="../viaggio.html">Viaggio in Foto</a></li>
+      <li><a href="cv.html">CV</a></li>
+    </ul>
+  </nav>
+
+  <div class="about-page">
+
+    <header class="about-header sr">
+      <h1 class="about-title">Curriculum<br>Vitae.</h1>
+      <p class="about-intro">
+        Sono uno studente di Design della Comunicazione, motivato e con solide basi teoriche e crescente esperienza pratica in ambito media e gestionale. Appassionato di sport, comunicazione e project management.
+      </p>
+      <a href="../CV/CV.pdf" download class="cv-download-btn">Scarica CV ↓</a>
+    </header>
+
+    <div class="about-body">
+
+      <div class="about-block sr">
+        <h3>Formazione</h3>
+        <ul>
+          <li>Politecnico di Milano — Communication Design (2023 – in corso)</li>
+          <li>Liceo Scientifico Galvani, Bologna — programma bilingue ITA/ENG (fino al 2023)</li>
+          <li>Cronache Academy — Cronache di Spogliatoio, Milano (2023)</li>
+        </ul>
+      </div>
+
+      <div class="about-block sr">
+        <h3>Lingue</h3>
+        <ul>
+          <li>Italiano — C2 / Madrelingua</li>
+          <li>Inglese — C1 / Avanzato</li>
+          <li>Francese — B1 / Intermedio</li>
+        </ul>
+      </div>
+
+      <div class="about-block full-width sr">
+        <h3>Esperienze</h3>
+        <div class="cv-exp-entry">
+          <p class="cv-exp-year">2024 · Milano</p>
+          <p class="cv-exp-title">Editorial Designer — Oltre la Visione</p>
+          <p class="cv-exp-desc">Ideazione e progettazione dell'impianto editoriale di Oltre la Visione, rivista della serie DesignVerso dedicata al designer milanese Franco Grignani. Il progetto articola, attraverso un sistema strutturato di sezioni, i momenti chiave della carriera e del percorso personale dell'autore.</p>
+        </div>
+        <div class="cv-exp-entry">
+          <p class="cv-exp-year">2025 · Milano</p>
+          <p class="cv-exp-title">Web Developer — Unverse</p>
+          <p class="cv-exp-desc">Progettazione e sviluppo di un sito sperimentale ispirato e realizzato in collaborazione con il cantautore, produttore discografico e polistrumentista Andrea Venerus.</p>
+        </div>
+        <div class="cv-exp-entry">
+          <p class="cv-exp-year">2025 · Milano</p>
+          <p class="cv-exp-title">Project Reviewer — Laboratorio Metaprogetto</p>
+          <p class="cv-exp-desc">Revisione e consulenza ai team studenteschi che sviluppano progetti sperimentali e orientati all'innovazione nell'ambito del Laboratorio di Metaprogetto del corso triennale in Communication Design al Politecnico di Milano.</p>
+        </div>
+        <div class="cv-exp-entry">
+          <p class="cv-exp-year">2026 · Milano</p>
+          <p class="cv-exp-title">Communication Designer — IPT Team</p>
+          <p class="cv-exp-desc">Supporto allo sviluppo dell'identità visiva di IPT Team: progettazione del logo, definizione del brand, realizzazione del sito web e attività di comunicazione e content creation.</p>
+        </div>
+      </div>
+
+      <div class="about-block full-width sr">
+        <h3>Competenze Digitali</h3>
+        <div class="cv-skill-grid">
+          <div class="cv-skill-item"><span>Figma</span><span class="cv-skill-level">Intermedio</span></div>
+          <div class="cv-skill-item"><span>Adobe Illustrator</span><span class="cv-skill-level">Intermedio</span></div>
+          <div class="cv-skill-item"><span>Adobe InDesign</span><span class="cv-skill-level">Intermedio</span></div>
+          <div class="cv-skill-item"><span>Adobe Premiere Pro</span><span class="cv-skill-level">Intermedio</span></div>
+          <div class="cv-skill-item"><span>Adobe Photoshop</span><span class="cv-skill-level">Base</span></div>
+          <div class="cv-skill-item"><span>CSS</span><span class="cv-skill-level">Intermedio</span></div>
+          <div class="cv-skill-item"><span>HTML</span><span class="cv-skill-level">Base</span></div>
+          <div class="cv-skill-item"><span>GitHub</span><span class="cv-skill-level">Base</span></div>
+          <div class="cv-skill-item"><span>Google Workspace</span><span class="cv-skill-level">Intermedio</span></div>
+          <div class="cv-skill-item"><span>Notion</span><span class="cv-skill-level">Base</span></div>
+          <div class="cv-skill-item"><span>Microsoft Office</span><span class="cv-skill-level">Intermedio</span></div>
+          <div class="cv-skill-item"><span>macOS</span><span class="cv-skill-level">Intermedio</span></div>
+        </div>
+      </div>
+
+      <div class="about-block sr">
+        <h3>Bandi</h3>
+        <ul>
+          <li>Bando Visual Identity — Bergamo Scienza, Fondazione BergamoScienza (2026)</li>
+          <li>Bando Mascotte — Una Mascotte per la Bombina, Ente Parco dei Colli di Bergamo × Politecnico di Milano (2026)</li>
+        </ul>
+      </div>
+
+      <div class="about-block sr">
+        <h3>Contatti</h3>
+        <ul>
+          <li><a href="mailto:diegochinni04@gmail.com" style="color:var(--gold)">diegochinni04@gmail.com</a></li>
+          <li>+39 366 242 2230</li>
+          <li>Milano, Italia</li>
+          <li>Disponibile per stage e collaborazioni</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-left">
+      <span class="footer-name">Diego Chinni</span>
+      <span class="footer-location">Milano, IT</span>
+    </div>
+    <div class="footer-right">
+      <a href="mailto:diegochinni04@gmail.com">diegochinni04@gmail.com</a>
+    </div>
+    <div class="footer-copy">© 2026 Diego Chinni</div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
