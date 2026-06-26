@@ -67,15 +67,35 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach((e, i) => {
       if (!e.isIntersecting) return;
       const delay = +e.target.dataset.delay || i * 60;
-      setTimeout(() => e.target.classList.add('visible', 'reveal'), delay);
+      setTimeout(() => e.target.classList.add('visible'), delay);
       obs.unobserve(e.target);
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-  els.forEach((el, i) => { el.dataset.delay = el.dataset.delay || i * 80; obs.observe(el); });
+  }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+  els.forEach((el, i) => { el.dataset.delay = el.dataset.delay || i * 60; obs.observe(el); });
 });
 
-/* ── NAV BLEND ── */
-window.addEventListener('scroll', () => {
+/* ── MOBILE HAMBURGER MENU ── */
+document.addEventListener('DOMContentLoaded', () => {
   const nav = document.getElementById('nav');
-  if (nav) nav.style.mixBlendMode = window.scrollY > 80 ? 'normal' : 'difference';
-}, { passive: true });
+  const navLinks = nav?.querySelector('.nav-links');
+  if (!nav || !navLinks) return;
+
+  const btn = document.createElement('button');
+  btn.className = 'nav-hamburger';
+  btn.setAttribute('aria-label', 'Menu');
+  btn.innerHTML = '<span></span><span></span><span></span>';
+  nav.appendChild(btn);
+
+  function closeMenu() {
+    navLinks.classList.remove('open');
+    btn.classList.remove('open');
+    document.body.classList.remove('nav-open');
+  }
+  btn.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    document.body.classList.toggle('nav-open', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+});
