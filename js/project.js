@@ -14,7 +14,23 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Primo stato attivo */
   sections[0].classList.add('active');
 
+  /* ── MOBILE: informazioni diluite tra le immagini ──
+     Su schermi piccoli la card mostra solo l'intestazione;
+     le sezioni di testo vengono distribuite nella galleria,
+     inserite prima delle etichette di categoria. */
+  const isMobile = window.matchMedia('(max-width: 900px)').matches;
+  if (isMobile) {
+    const cats = Array.from(gallery.querySelectorAll('.gallery-category'));
+    sections.slice(1).forEach((sec, i) => {
+      sec.classList.add('mobile-inline');
+      const target = cats[i + 1];
+      if (target) gallery.insertBefore(sec, target);
+      else gallery.appendChild(sec);
+    });
+  }
+
   function update() {
+    if (isMobile) return;
     const rect   = gallery.getBoundingClientRect();
     const height = gallery.offsetHeight - window.innerHeight;
     const prog   = height > 0 ? Math.max(0, Math.min(1, -rect.top / height)) : 0;

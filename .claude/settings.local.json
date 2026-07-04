@@ -7,7 +7,11 @@
       "Bash(ruby --version)",
       "Bash(pdftotext \"/Users/dchinni/Desktop/portfolio/diego website/CV/CV Builder Polimi.pdf\" -)",
       "Bash(python3 -c ' *)",
-      "Bash(pip3 install *)"
+      "Bash(pip3 install *)",
+      "Bash(sips --help)",
+      "Bash(sips -s format webp /dev/null)",
+      "Bash(python3 -c \"from PIL import Image, features; print\\('pillow ok, webp:', features.check\\('webp'\\)\\)\")",
+      "Bash(python3 -)"
     ]
   }
 }
