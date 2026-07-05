@@ -12,7 +12,7 @@
   --gold:       #CA875D;
   --line:       rgba(245,240,232,0.12);
 
-  --font-display: 'The Seasons', 'Georgia', serif;
+  --font-display: 'the-seasons', 'The Seasons', 'Georgia', serif;
   --font-body:    'Helvetica Neue', 'Helvetica', Arial, sans-serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -61,11 +61,14 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   z-index: 100;
 }
 .nav-logo {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  letter-spacing: 0.05em;
-  color: var(--off-white);
-  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+}
+.nav-logo-img {
+  height: 30px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 1px 6px rgba(0,0,0,0.5));
 }
 .nav-links { display: flex; gap: 40px; }
 .nav-links a {
@@ -505,7 +508,8 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   text-decoration: none;
 }
 .gallery-ext-link::after {
-  content: '↗';
+  content: '\2197\FE0E'; /* freccia in presentazione testo, mai emoji */
+  font-family: var(--font-body);
   position: absolute;
   top: 10px; right: 10px;
   width: 28px; height: 28px;
@@ -885,8 +889,22 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .nav { padding: 0 20px; }
+  /* Navbar: sfondo pieno, niente sovrapposizioni strane con i testi */
+  .nav {
+    padding: 0 20px;
+    background: var(--black);
+    border-bottom: 1px solid var(--line);
+  }
   .nav-hamburger { display: flex; }
+
+  /* Footer: via il nome grande */
+  .footer-name { display: none; }
+
+  /* Cursore custom: mai su touch (doppia sicurezza oltre al JS) */
+  .cursor { display: none !important; }
+
+  /* Freccia link sempre visibile su mobile (niente hover su touch) */
+  .gallery-ext-link::after { opacity: 1; }
   .nav-links {
     display: none;
     position: fixed;
@@ -936,7 +954,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     top: 0;
     height: auto;
     margin-top: var(--nav-h);
-    padding: 16px 20px 24px;
+    padding: 10px 20px 24px;
     border-bottom: 1px solid var(--line);
     overflow: visible;
   }
@@ -955,7 +973,13 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     display: none;
   }
   .card-section.active { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
-  .card-project-title { font-size: clamp(1.6rem, 7vw, 2.2rem); line-height: 1.15; }
+  /* Titolo progetto: SEMPRE su una riga sola */
+  .card-project-title {
+    font-size: clamp(1.3rem, 6vw, 2rem);
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+  .card-project-title br { display: none; }
   .card-footer {
     flex-direction: column;
     gap: 10px;
@@ -973,17 +997,16 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   .card-meta-label { font-size: 0.5625rem; }
   .card-meta-value { font-size: 0.8438rem; }
 
-  /* Hero sub: contrasto garantito anche su foto chiare */
+  /* Hero sub: contrasto senza barra — solo ombra netta multipla */
   .hero-sub {
-    color: var(--off-white);
-    background: rgba(10,10,10,0.55);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    padding: 10px 16px;
-    border-radius: 999px;
+    color: #fff;
     flex-wrap: wrap;
     text-align: center;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+    font-weight: 500;
+    text-shadow:
+      0 0 4px rgba(0,0,0,0.9),
+      0 1px 3px rgba(0,0,0,0.9),
+      0 2px 12px rgba(0,0,0,0.7);
   }
 
   /* Sezioni info diluite nella galleria (spostate da project.js) */
@@ -1007,8 +1030,14 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   .gallery-photo img { max-height: 52vh; }
   .gallery-photo.cover img { max-height: 56vh; object-fit: cover !important; }
   .gallery-row.uniform .gallery-photo img { height: min(30vh, 300px) !important; }
-  .gallery-row.match-h { flex-direction: row; }
-  .gallery-row.match-h .gallery-photo img { height: min(32vh, 300px) !important; }
+  .gallery-row.match-h { flex-direction: row; align-items: stretch; }
+  .gallery-row.match-h .gallery-photo { flex: 1; min-width: 0; }
+  .gallery-row.match-h .gallery-photo img {
+    height: min(32vh, 300px) !important;
+    width: 100% !important;
+    max-height: none;
+    object-fit: contain;
+  }
   .gallery-row.gallery-pair { flex-direction: row; gap: 12px; }
   .gallery-photo.edge-to-edge { margin-left: -16px; margin-right: -16px; }
   .gallery-photo.edge-to-edge img { max-height: none; }

@@ -3,31 +3,34 @@
    ════════════════════════════════════════ */
 'use strict';
 
-/* ── CUSTOM CURSOR ── */
-const cursor = document.createElement('div');
-cursor.className = 'cursor';
-document.body.appendChild(cursor);
+/* ── CUSTOM CURSOR (solo dispositivi con mouse) ── */
+const hasPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+if (hasPointer) {
+  const cursor = document.createElement('div');
+  cursor.className = 'cursor';
+  document.body.appendChild(cursor);
 
-let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
+  let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
 
-document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+  document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
 
-(function animateCursor() {
-  curX += (mouseX - curX) * 0.18;
-  curY += (mouseY - curY) * 0.18;
-  cursor.style.left = curX + 'px';
-  cursor.style.top  = curY + 'px';
-  requestAnimationFrame(animateCursor);
-})();
+  (function animateCursor() {
+    curX += (mouseX - curX) * 0.18;
+    curY += (mouseY - curY) * 0.18;
+    cursor.style.left = curX + 'px';
+    cursor.style.top  = curY + 'px';
+    requestAnimationFrame(animateCursor);
+  })();
 
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('is-link'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('is-link'));
-});
-document.querySelectorAll('.project-item').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('is-hovering'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('is-hovering'));
-});
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('is-link'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('is-link'));
+  });
+  document.querySelectorAll('.project-item').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('is-hovering'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('is-hovering'));
+  });
+}
 
 /* ── HERO LETTER ANIMATION ── */
 function initHero() {

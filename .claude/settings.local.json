@@ -11,7 +11,13 @@
       "Bash(sips --help)",
       "Bash(sips -s format webp /dev/null)",
       "Bash(python3 -c \"from PIL import Image, features; print\\('pillow ok, webp:', features.check\\('webp'\\)\\)\")",
-      "Bash(python3 -)"
+      "Bash(python3 -)",
+      "Bash(curl -sI \"https://api.fontshare.com/v2/css?f[]=the-seasons@400,700&display=swap\")",
+      "Bash(curl -s \"https://api.fontshare.com/v2/css?f[]=the-seasons@400,700&display=swap\")",
+      "Bash(system_profiler SPFontsDataType)",
+      "Bash(mdfind -name \"seasons\")",
+      "Bash(grep -iE \"\\\\.\\(otf|ttf|woff2?\\)$\")",
+      "Bash(curl -s \"https://use.typekit.net/jur8rxn.css\")"
     ]
   }
 }
